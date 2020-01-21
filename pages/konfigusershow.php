@@ -185,6 +185,7 @@ if ($idnik==0) {
                 </div> -->
 
                 <div class="row form-group text-center">
+                    <a href="#" class="btn btn-danger btn-sm delete" id_del='<?=$row['IDUSERS']?>'><i class="fa fa-trash"></i>  DELETE USER</a>
                     <button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm"><i class="ace-icon fa fa-check"></i> UPDATE DATA</button>            
                 </div>
             </form>
@@ -218,6 +219,26 @@ if ($idnik==0) {
       });
     });
 
+    $(function() {
+        $(".delete").click(function(){
+                var element = $(this) ;
+                var app_id = element.attr("id_del"); 
+                var info =  'iddel=' + app_id;                              
+                if(confirm("APAKAH ANDA YAKIN AKAN MENGHAPUS USER TERSEBUT ?")){
+                        $.ajax({
+                                type: "POST",
+                                url: "../exe/procadminpetugasdeleted.php",
+                                data: info,
+                                success: function() {
+                                    location.reload();
+                                }
+                        });
+                            //    location.reload();
+                }
+                // location.reload();
+                return false;
+        });
+      });
     
 </script>
 
