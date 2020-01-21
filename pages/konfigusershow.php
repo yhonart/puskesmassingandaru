@@ -227,13 +227,12 @@ if ($idnik==0) {
                 if(confirm("APAKAH ANDA YAKIN AKAN MENGHAPUS USER TERSEBUT ?")){
                         $.ajax({
                                 type: "POST",
-                                url: "../exe/procadminpetugasdeleted.php",
+                                url: "../exe/procadminpetugasdelete.php",
                                 data: info,
                                 success: function() {
                                     location.reload();
                                 }
-                        });
-                            //    location.reload();
+                        }); 
                 }
                 // location.reload();
                 return false;
