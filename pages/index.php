@@ -86,7 +86,7 @@
 				</button>
 
 				<div class="navbar-header pull-left">
-					<a href="index.html" class="navbar-brand">
+					<a href="#" class="navbar-brand">
 						<small>
 							<i class="fa fa-heartbeat"></i>
 							SYMASKES
@@ -173,7 +173,7 @@
 
 				<ul class="nav nav-list">
 					<li class="">
-						<a href="index.html">
+						<a href="?page=dashboard">
 							<i class="menu-icon fa fa-tachometer"></i>
 							<span class="menu-text"> Dashboard </span>
 						</a>
@@ -264,6 +264,18 @@
 						<a href="?page=Kasir">
 							<i class="menu-icon fa fa-picture-o"></i>
 							<span class="menu-text"> KASIR </span>
+						</a>
+
+						<b class="arrow"></b>
+					</li>
+					<?php
+						}
+						else if ($row['HAKACC']=='11') {
+					?>
+					<li class="">
+						<a href="?page=Anamnesa">
+							<i class="menu-icon fa fa-stethoscope"></i>
+							<span class="menu-text"> Anamnesa Pasien </span>
 						</a>
 
 						<b class="arrow"></b>
@@ -366,6 +378,7 @@
 								case 'Lab' : include "lab.php"; break;
 								case 'Apotik' : include "apotik.php"; break;
 								case 'Kasir' : include "kasir.php"; break;
+								case 'Anamnesa' : include "anamnesa.php"; break;
 								case 'main' :
 								default : include "dashboard.php"; 
 

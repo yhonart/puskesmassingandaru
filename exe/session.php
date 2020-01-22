@@ -27,6 +27,7 @@
         '8' => "APOTIK",
         '9' => "LAB",
         '10' => "KASIR",
+        '11' => "ANAMNESIA",
     );
     $hakakses = $hakaksesarray[$row['HAKACC']];    
     $iduser=$row['IDUSERS'];

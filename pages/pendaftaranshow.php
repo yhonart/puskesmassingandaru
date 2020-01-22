@@ -63,7 +63,8 @@ if ($idnik==0) {
                 <input type="text" id="tempatlahir" name="tempatlahir" class="form-control" style="text-transform:uppercase" placeholder="Kota Lahir">
             </div>
             <div class="col-12 col-md-4">
-                <input type="text" id="tgllahir" name="tgllahir" class="form-control input-mask-date" >
+                <input class="form-control date-picker" id="tgllahir" name="tgllahir" type="text" data-date-format="yyyy-mm-dd" autocomplete="off"/>
+                <!-- <input type="text" id="tgllahir" name="tgllahir" class="form-control input-mask-date" > -->
             </div>
         </div>
 
@@ -152,14 +153,40 @@ if ($idnik==0) {
         <h5 class="widget-title">Tindakan Pasien a.n <?=$row['nama']?>.</h5>
     </div>
     <div class="widget-body">
-        <div class="widget-main">
-            <strong>DATA DIRI PASIEN</strong><hr>
+        <div class="widget-main">            
             <div class="profile-user-info profile-user-info-striped">
                 <div class="profile-info-row">
                     <div class="profile-info-name"> Nama</div>
 
                     <div class="profile-info-value">
                         <span class="editable" id="username"><?=$row['nama']?></span>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Umur</div>
+
+                    <div class="profile-info-value">
+                        <span class="editable" id="username">
+                            <?php
+                                $tgllahir = new DateTime($row['tgllahir']);
+                                $today = new DateTime('today');
+                                $y = $today->diff($tgllahir)->y;
+                                $m = $today->diff($tgllahir)->m;
+                                $d = $today->diff($tgllahir)->d;
+                                if($y<2){
+                                    if($y!=0){
+                                        $tahun = $y. " Tahun";
+                                    }
+                                    else{
+                                        $tahun = "";
+                                    }
+                                }
+                                else{
+                                    $tahun = $y. " Tahun";
+                                }
+                                echo $tahun." ".$m." Bulan ".$d." Hari";
+                            ?>
+                        </span>
                     </div>
                 </div>
                 <div class="profile-info-row">
@@ -172,7 +199,7 @@ if ($idnik==0) {
                 <div class="profile-info-row">
                     <div class="profile-info-name"> Tempat Tgl. lahir</div>
 
-                    <div class="profile-info-value">
+                    <div class="profile-info-value">                        
                         <span class="editable" id="username"><?=$row['kotalahir']?>, <?=$row['tgllahir']?></span>
                     </div>
                 </div>
@@ -181,6 +208,27 @@ if ($idnik==0) {
 
                     <div class="profile-info-value">
                         <span class="editable" id="username"><?=$row['jeniskelamin']?></span>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> No. Telephone</div>
+
+                    <div class="profile-info-value">
+                        <span class="editable" id="username">+62 <?=$row['no_telp']?></span>
+                    </div>
+                </div>
+                <div class="profile-info-row">
+                    <div class="profile-info-name"> Kepesertaan</div>
+
+                    <div class="profile-info-value">
+                        <span class="editable" id="username">
+                            <?php
+                                echo $row['kepesertaan'];
+                                if($row['kepesertaan']=="BPJS"){
+                                    echo ", <strong>No BPJS </strong> :".$row['nobpjs'];
+                                }
+                            ?>
+                        </span>
                     </div>
                 </div>
             </div>
@@ -273,9 +321,12 @@ function isNumberKey(evt){
     return false;
     return true;
 } 
-
-jQuery(function($) {
-    $('.input-mask-date').mask('99/99/9999');
-});
+$('.date-picker').datepicker({
+    autoclose: true,
+    todayHighlight: true
+})
+// jQuery(function($) {
+//     $('.input-mask-date').mask('99/99/9999');
+// });
 </script>
 
