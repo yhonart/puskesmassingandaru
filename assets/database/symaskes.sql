@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 21, 2020 at 06:14 PM
+-- Generation Time: Jan 22, 2020 at 06:36 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.35
 
@@ -49,7 +49,10 @@ CREATE TABLE `pasien` (
 --
 
 INSERT INTO `pasien` (`id`, `noreg`, `nama`, `alamat`, `kotalahir`, `tgllahir`, `jeniskelamin`, `no_telp`, `kepesertaan`, `nobpjs`, `remarks`, `created_date`, `status`) VALUES
-(1, 'P202001561', 'FEBRI', 'Perum. BCK Blok C 11 No.15 RT 03 RW 10', 'SERANG', '07/07/1989', 'Laki-laki', 2147483647, 'UMUM', 0, '', '2020-01-18', 1);
+(1, 'P202001561', 'FEBRI', 'Perum. BCK Blok C 11 No.15 RT 03 RW 10', 'SERANG', '1989-07-07', 'Laki-laki', 2147483647, 'UMUM', 0, '', '2020-01-18', 1),
+(2, 'P202001189', 'DADANG HERMAWAN', 'Perum Lebak Indah Kramatwatu RT 02 RW 08', 'CILEGON', '1986-07-02', 'Laki-laki', 877717899, 'UMUM', 0, '', '2020-01-22', 1),
+(3, 'P202001949', 'ROCHMAT', 'Link. Dimana Aja Ada RT 02 RW 10', 'CILEGON', '1981-05-06', 'Laki-laki', 2147483647, 'BPJS', 1234567890, '', '2020-01-22', 1),
+(4, 'P202001973', 'ZEIN MUHAMMAD RAFFI', 'Perum. BCK Blok C 11 No.15 RT 03 RW 10', 'CILEGON', '2020-01-08', 'Laki-laki', 2147483647, 'BPJS', 987654321, '', '2020-01-22', 1);
 
 -- --------------------------------------------------------
 
@@ -64,11 +67,6 @@ CREATE TABLE `pasienproses` (
   `keluhan_pasien` text NOT NULL,
   `tujuan` varchar(20) NOT NULL,
   `status` int(1) NOT NULL COMMENT '1 Poli 11 Lab 2 Apotik 3 Kasir 4 Selesai',
-  `diagnosa` text,
-  `tindakan_dokter` text,
-  `resep` varchar(225) DEFAULT NULL,
-  `an_dokter` varchar(100) DEFAULT NULL,
-  `hasil_lab` text,
   `catatan` text,
   `created_date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `updated_date` date NOT NULL
@@ -78,9 +76,10 @@ CREATE TABLE `pasienproses` (
 -- Dumping data for table `pasienproses`
 --
 
-INSERT INTO `pasienproses` (`id_proses`, `nomor`, `id_pasien`, `keluhan_pasien`, `tujuan`, `status`, `diagnosa`, `tindakan_dokter`, `resep`, `an_dokter`, `hasil_lab`, `catatan`, `created_date`, `updated_date`) VALUES
-(1, 1, 1, 'Panas Dingin', 'UMUM', 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-12 16:25:36', '0000-00-00'),
-(2, 2, 2, 'Kepala Sakit', 'UMUM', 1, NULL, NULL, NULL, NULL, NULL, NULL, '2020-01-12 16:26:03', '0000-00-00');
+INSERT INTO `pasienproses` (`id_proses`, `nomor`, `id_pasien`, `keluhan_pasien`, `tujuan`, `status`, `catatan`, `created_date`, `updated_date`) VALUES
+(1, 1, 1, 'Panas Dingin', 'UMUM', 0, NULL, '2020-01-22 17:14:33', '0000-00-00'),
+(2, 2, 2, 'Kepala Sakit', 'UMUM', 0, NULL, '2020-01-22 17:14:45', '0000-00-00'),
+(3, 1, 2, 'Sakit Perut, Diare', 'UMUM', 1, NULL, '2020-01-22 16:57:40', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -121,7 +120,7 @@ CREATE TABLE `users_acc` (
 
 INSERT INTO `users_acc` (`IDUSERS`, `USERNAME`, `FULLNAME`, `EMAIL`, `PASSWORD`, `HAKACC`, `NIP`, `STATUS`) VALUES
 (1, 'administrator', 'administrator', 'admin@symaskes.com', 'e00cf25ad42683b3df678c61f42c6bda', 1, '900001', 1),
-(4, 'yusuf', 'YUSUF HANAFI', 'yusuf7789@gmail.com', '9850ed5f68693a133df799fb94209db3', 2, '0999999', 1);
+(4, 'yusuf', 'YUSUF HANAFI', 'yusuf7789@gmail.com', '9850ed5f68693a133df799fb94209db3', 11, '0999999', 1);
 
 --
 -- Indexes for dumped tables
@@ -159,13 +158,13 @@ ALTER TABLE `users_acc`
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT for table `pasienproses`
 --
 ALTER TABLE `pasienproses`
-  MODIFY `id_proses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_proses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `paymenconfig`
