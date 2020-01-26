@@ -1,13 +1,14 @@
 
 <?php
     include('../exe/dbconnect.php');
-    $anamnesa = $con->prepare("SELECT `id_proses`,`nomor`,`id_pasien`,`tujuan` FROM `pasienproses` WHERE `status`='1'");
+    $today = date("Y-m-d");
+    $anamnesa = $con->prepare("SELECT DATE_FORMAT(created_date, '%Y-%m-%d') AS datecreate, `id_proses`,`nomor`,`id_pasien`,`tujuan` FROM `pasienproses` WHERE `status`='1'  AND DATE_FORMAT(created_date, '%Y-%m-%d')='$today'");
     $anamnesa->execute();
     $rowpas = $anamnesa->fetchAll();
 ?>
 <div class="row">        
     <div class="col-lg-4">
-        
+        <p></p>        
         <label for="form-field-select-1">Pilih Nama Pasien</label>
         <select name="username" id="username" class="form-control" size="10">
             <?php                                           

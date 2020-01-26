@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2020 at 06:36 PM
+-- Generation Time: Jan 26, 2020 at 05:43 PM
 -- Server version: 10.1.31-MariaDB
 -- PHP Version: 5.6.35
 
@@ -21,6 +21,31 @@ SET time_zone = "+00:00";
 --
 -- Database: `symaskes`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `detailproses`
+--
+
+CREATE TABLE `detailproses` (
+  `id` int(11) NOT NULL,
+  `pasienproses_id` int(4) NOT NULL,
+  `tinggi_badan` int(4) NOT NULL,
+  `berat_badan` int(4) NOT NULL,
+  `tensi` char(10) NOT NULL,
+  `suhu` int(4) NOT NULL,
+  `tindakan` char(20) NOT NULL,
+  `dokter` char(20) NOT NULL,
+  `status` int(2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `detailproses`
+--
+
+INSERT INTO `detailproses` (`id`, `pasienproses_id`, `tinggi_badan`, `berat_badan`, `tensi`, `suhu`, `tindakan`, `dokter`, `status`) VALUES
+(1, 0, 160, 71, '120', 37, '', '', 1);
 
 -- --------------------------------------------------------
 
@@ -79,7 +104,9 @@ CREATE TABLE `pasienproses` (
 INSERT INTO `pasienproses` (`id_proses`, `nomor`, `id_pasien`, `keluhan_pasien`, `tujuan`, `status`, `catatan`, `created_date`, `updated_date`) VALUES
 (1, 1, 1, 'Panas Dingin', 'UMUM', 0, NULL, '2020-01-22 17:14:33', '0000-00-00'),
 (2, 2, 2, 'Kepala Sakit', 'UMUM', 0, NULL, '2020-01-22 17:14:45', '0000-00-00'),
-(3, 1, 2, 'Sakit Perut, Diare', 'UMUM', 1, NULL, '2020-01-22 16:57:40', '0000-00-00');
+(3, 1, 2, 'Sakit Perut, Diare', 'UMUM', 1, NULL, '2020-01-26 16:57:40', '0000-00-00'),
+(4, 2, 0, '', '', 1, NULL, '2020-01-26 16:38:45', '0000-00-00'),
+(5, 3, 0, '', '', 1, NULL, '2020-01-26 16:39:58', '0000-00-00');
 
 -- --------------------------------------------------------
 
@@ -127,6 +154,12 @@ INSERT INTO `users_acc` (`IDUSERS`, `USERNAME`, `FULLNAME`, `EMAIL`, `PASSWORD`,
 --
 
 --
+-- Indexes for table `detailproses`
+--
+ALTER TABLE `detailproses`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `pasien`
 --
 ALTER TABLE `pasien`
@@ -155,6 +188,12 @@ ALTER TABLE `users_acc`
 --
 
 --
+-- AUTO_INCREMENT for table `detailproses`
+--
+ALTER TABLE `detailproses`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
 -- AUTO_INCREMENT for table `pasien`
 --
 ALTER TABLE `pasien`
@@ -164,7 +203,7 @@ ALTER TABLE `pasien`
 -- AUTO_INCREMENT for table `pasienproses`
 --
 ALTER TABLE `pasienproses`
-  MODIFY `id_proses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_proses` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `paymenconfig`

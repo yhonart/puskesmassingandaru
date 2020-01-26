@@ -101,14 +101,14 @@ $row=$queryuser->fetch();
                 </div>
             </div>
             <hr>
-        <form action="" id="formregtopoli" method="post" enctype="multipart/form-data" class="form-horizontal">
-        <input type="hidden" name="idpasien" id="idpasien" value="<?=$row['id']?>"></input>        
+        <form action="" id="formanamnesa" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <input type="hidden" name="idproses" id="idproses" value="<?=$rowproc['keluhan_pasien']?>"></input>        
         <div class="form-group">
             <div class="col col-md-3">
                 <label for="hf-email" class=" form-control-label">Tinggi Badan</label>
             </div>
             <div class="col-12 col-md-4">
-                <input type="text" id="tinggi" name="tinggi" class="form-control" style="text-transform:capitalize;" required=""> 
+                <input type="text" onkeypress="return isNumberKey(event)" id="tinggi" name="tinggi" class="form-control" style="text-transform:capitalize;" required=""> 
             </div>
         </div>
         <div class="form-group">
@@ -116,7 +116,7 @@ $row=$queryuser->fetch();
                 <label for="hf-email" class=" form-control-label">Berat Badan</label>
             </div>
             <div class="col-12 col-md-4">
-                <input type="text" id="berat" name="berat" class="form-control" style="text-transform:capitalize;" required=""> 
+                <input type="text" onkeypress="return isNumberKey(event)" id="berat" name="berat" class="form-control" style="text-transform:capitalize;" required=""> 
             </div>
         </div>
         <div class="form-group">
@@ -124,7 +124,7 @@ $row=$queryuser->fetch();
                 <label for="hf-email" class=" form-control-label">Tensi</label>
             </div>
             <div class="col-12 col-md-4">
-                <input type="text" id="tensi" name="tensi" class="form-control" style="text-transform:capitalize;" required=""> 
+                <input type="text" onkeypress="return isNumberKey(event)" id="tensi" name="tensi" class="form-control" style="text-transform:capitalize;" required=""> 
             </div>
         </div>
         <div class="form-group">
@@ -132,12 +132,12 @@ $row=$queryuser->fetch();
                 <label for="hf-email" class=" form-control-label">Suhu Badan</label>
             </div>
             <div class="col-12 col-md-4">
-                <input type="text" id="suhu" name="suhu" class="form-control" style="text-transform:capitalize;" required=""> 
+                <input type="text" onkeypress="return isNumberKey(event)" id="suhu" name="suhu" class="form-control" style="text-transform:capitalize;" required=""> 
             </div>
         </div>
         
         <div class="form-group text-center">
-            <button type="submit" name="submit" id="submit" class="btn btn-success btn-sm"><i class="ace-icon fa fa-check"></i> SUBMIT</button>            
+            <button type="submit" onkeypress="return isNumberKey(event)" name="submit" id="submit" class="btn btn-success btn-sm"><i class="ace-icon fa fa-check"></i> SUBMIT</button>            
         </div>
         </form>
         </div>
@@ -146,11 +146,11 @@ $row=$queryuser->fetch();
 
 <script type="text/javascript">
 $(document).ready(function(){
-  $("form#formadd").submit(function(event){    
+  $("form#formanamnesa").submit(function(event){    
     document.getElementById("submit").disabled='true';
     event.preventDefault();
     $.ajax({
-      url: '../exe/procpendaftaran.php',
+      url: '../exe/procanamnesa.php',
       type: 'POST',
       data: new FormData(this),
       async: true,
@@ -162,28 +162,6 @@ $(document).ready(function(){
         document.getElementById("submit").removeAttribute('disabled');        
         alertify.success(status);
         document.getElementById("submit").disabled = 'true'; 
-      }
-    });
-    return false;
-  });
-
-  $("form#formregtopoli").submit(function(event){    
-    document.getElementById("submit").disabled='true';
-    event.preventDefault();
-    $.ajax({
-      url: '../exe/proctopoli.php',
-      type: 'POST',
-      data: new FormData(this),
-      async: true,
-      cache: true,
-      contentType: false,
-      processData: false,
-      success: function (status) {
-        $("#loading").hide();
-        document.getElementById("submit").removeAttribute('disabled');        
-        alertify.success(status);
-        document.getElementById("submit").disabled = 'true';
-        location.reload(); 
       }
     });
     return false;
