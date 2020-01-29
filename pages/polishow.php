@@ -121,7 +121,7 @@ $row=$queryuser->fetch();
             <div class="col col-md-3">
                 <label for="hf-email" class=" form-control-label">Keterangan</label>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-9">
                 <input type="text" id="keterangan" name="keterangan" class="form-control" required=""> 
             </div>
         </div>

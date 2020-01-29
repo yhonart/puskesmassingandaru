@@ -1,10 +1,10 @@
 <?php
 include("dbconnect.php");
-$diagnosa = $_POST['diagnosa'];
+$diagnosa = $_POST['tindakan'];
 $keterangan = $_POST['keterangan'];
-$tindakan = $_POST['tindakan'];
 $idproses = $_POST['idproses'];
 $resep = "";
+
 if ($tindakan == "APOTIK") {
 	$resep1 = $_POST['resep'];
 	foreach ($resep1 as $rsp) {
