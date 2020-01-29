@@ -10,6 +10,7 @@
 include('../exe/dbconnect.php');
 
 $id = $_POST['iduser'];
+$akses = $_POST['hakakses'];
 // echo $idnik;
 $queryproc = $con->prepare("SELECT * FROM pasienproses WHERE id_proses = '".$id."'");
 $queryproc->execute();
@@ -105,34 +106,23 @@ $row=$queryuser->fetch();
         <input type="hidden" name="idproses" id="idproses" value="<?=$rowproc['id_proses']?>"></input>        
         <div class="form-group">
             <div class="col col-md-3">
-                <label for="hf-email" class=" form-control-label">Tinggi Badan</label>
+                <label for="hf-email" class=" form-control-label">Tindakan</label>
             </div>
             <div class="col-12 col-md-4">
-                <input type="text" onkeypress="return isNumberKey(event)" id="tinggi" name="tinggi" class="form-control" style="text-transform:capitalize;" required=""> 
+                <select name="tindakan" id="tindakan" class="form-control">
+                    <option value='0'>Pilih Tindakan Pasien</option>
+                    <option value='LAB'>Cek Laboratorium</option>
+                    <option value='P3K'>P3K</option>
+                    <option value='NEBU'>NEBU</option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <div class="col col-md-3">
-                <label for="hf-email" class=" form-control-label">Berat Badan</label>
+                <label for="hf-email" class=" form-control-label">Keterangan</label>
             </div>
             <div class="col-12 col-md-4">
-                <input type="text" onkeypress="return isNumberKey(event)" id="berat" name="berat" class="form-control" style="text-transform:capitalize;" required=""> 
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col col-md-3">
-                <label for="hf-email" class=" form-control-label">Tensi</label>
-            </div>
-            <div class="col-12 col-md-4">
-                <input type="text" id="tensi" name="tensi" class="form-control" style="text-transform:capitalize;" required=""> 
-            </div>
-        </div>
-        <div class="form-group">
-            <div class="col col-md-3">
-                <label for="hf-email" class=" form-control-label">Suhu Badan</label>
-            </div>
-            <div class="col-12 col-md-4">
-                <input type="text" onkeypress="return isNumberKey(event)" id="suhu" name="suhu" class="form-control" style="text-transform:capitalize;" required=""> 
+                <input type="text" id="keterangan" name="keterangan" class="form-control" required=""> 
             </div>
         </div>
         
@@ -150,7 +140,7 @@ $(document).ready(function(){
     document.getElementById("submit").disabled='true';
     event.preventDefault();
     $.ajax({
-      url: '../exe/procanamnesa.php',
+      url: '../exe/procpoli.php',
       type: 'POST',
       data: new FormData(this),
       async: true,

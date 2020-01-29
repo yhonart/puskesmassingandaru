@@ -218,7 +218,7 @@
 						else if ($row['HAKACC']>='3'&&$row['HAKACC']<='7') {
 					?>
 					<li class="">
-						<a href="calendar.html">
+						<a href="?page=Poli">
 							<i class="menu-icon fa fa-calendar"></i>
 
 							<span class="menu-text">
