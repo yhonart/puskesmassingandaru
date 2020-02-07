@@ -11,6 +11,9 @@ include('../exe/dbconnect.php');
 
 $id = $_POST['iduser'];
 $akses = $_POST['hakakses'];
+$drname = $_POST['drname'];
+$drnip = $_POST['nipdr'];
+
 // echo $idnik;
 $queryproc = $con->prepare("SELECT * FROM pasienproses WHERE id_proses = '".$id."'");
 $queryproc->execute();
@@ -92,18 +95,21 @@ $row=$queryuser->fetch();
                     <div class="profile-info-value">
                         <span class="editable" id="username"><?=$rowproc['keluhan_pasien']?></span>
                     </div>
-                </div>
-                <div class="profile-info-row">
-                    <div class="profile-info-name"> Poli</div>
-
-                    <div class="profile-info-value">
-                        <span class="editable" id="username"><?=$rowproc['tujuan']?></span>
-                    </div>
-                </div>
+                </div>                
             </div>
             <hr>
         <form action="" id="formanamnesa" method="post" enctype="multipart/form-data" class="form-horizontal">
-        <input type="hidden" name="idproses" id="idproses" value="<?=$rowproc['id_proses']?>"></input>        
+        <input name="doktername" id="doktername" type="hidden" value="<?php echo $drname;?>"></input>
+        <input name="dokternip" id="dokternip" type="hidden" value="<?php echo $drnip;?>"></input> 
+        <input name="idproses" id="idproses" type="hidden" value="<?php echo $id;?>"></input>
+        <div class="form-group">
+            <div class="col col-md-3">
+                <label for="hf-email" class=" form-control-label">Diagnosa</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" id="diagnosa" name="diagnosa" class="form-control" required=""> 
+            </div>
+        </div>        
         <div class="form-group">
             <div class="col col-md-3">
                 <label for="hf-email" class=" form-control-label">Tindakan</label>
@@ -125,7 +131,14 @@ $row=$queryuser->fetch();
                 <input type="text" id="keterangan" name="keterangan" class="form-control" required=""> 
             </div>
         </div>
-        
+        <div class="form-group">
+            <div class="col col-md-3">
+                <label for="hf-email" class=" form-control-label">Resep Dokter</label>
+            </div>
+            <div class="col-12 col-md-9">
+                <input type="text" id="resep" name="resep" class="form-control" placeholder="Optional Masukkan Resep Apabila Ada"> 
+            </div>
+        </div>
         <div class="form-group text-center">
             <button type="submit" onkeypress="return isNumberKey(event)" name="submit" id="submit" class="btn btn-success btn-sm"><i class="ace-icon fa fa-check"></i> SUBMIT</button>            
         </div>
@@ -168,6 +181,16 @@ $('.date-picker').datepicker({
     autoclose: true,
     todayHighlight: true
 })
+$('.multi-field-wrapper').each(function() {
+      var $wrapper = $('.multi-fields', this);
+      $(".add-field", $(this)).click(function(e) {
+          $('.multi-field:first-child', $wrapper).clone(true).appendTo($wrapper).find('#resep').val('').focus();
+      });
+      $('.multi-field .remove-field', $wrapper).click(function() {
+          if ($('.multi-field', $wrapper).length > 1)
+              $(this).parent('.multi-field').remove();
+      });
+  }); 
 // jQuery(function($) {
 //     $('.input-mask-date').mask('99/99/9999');
 // });

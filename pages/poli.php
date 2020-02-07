@@ -32,7 +32,7 @@
         $("#username").change(function(){
             var username = $(this).find(":selected").val();
             // load it in the userInfo div above
-            $("#InputInfo").load('polishow.php',{iduser:username,hakakses:<?php echo $akses?>});
+            $("#InputInfo").load('polishow.php',{iduser:username,hakakses:<?php echo $akses?>,drname:'<?php echo $fullname; ?>',nipdr:'<?php echo $nip; ?>'});
             //$('#adminform').hide('fast');
         });
     });
