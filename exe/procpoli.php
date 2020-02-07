@@ -30,9 +30,10 @@ $dokter = $_POST['doktername'];
 $sqlupdateprosesdetail = $con->prepare("UPDATE `detailproses` SET `diagnosa`='$diagnosa', `tindakan`='$tindakan',`dokter`='$dokter',`status`='3' WHERE `pasienproses_id`='$idproses'");
 $sqlupdateprosesdetail->execute();
 
-// $sqlupdateproses = $con->prepare("");
-// if ($sqlupdateproses) {
-// 	echo "SUKSES";
-// }
+
+$sqlupdateproses = $con->prepare("");
+if ($sqlupdateproses) {
+	echo "SUKSES";
+}
 
 ?>
