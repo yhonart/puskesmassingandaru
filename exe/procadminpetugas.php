@@ -21,7 +21,7 @@ else{
 
 
 if ($sqlinsertpegawai) {
-	echo "SUKSES, Silahkan RELOAD Halaman";
+	echo "SUKSES, Silahkan KLIK TOMBOL RELOAD";
 }
 
 ?>

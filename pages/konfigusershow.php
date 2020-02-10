@@ -1,3 +1,8 @@
+<style type="text/css">
+#reloader {
+    display:none;
+}
+</style>
 <?php
 include('../exe/dbconnect.php');
 $idnik = $_POST['iduser'];
@@ -190,6 +195,7 @@ if ($idnik==0) {
                 <div class="row form-group text-center">
                     <a href="#" class="btn btn-danger btn-sm delete" id_del='<?=$row['IDUSERS']?>'><i class="fa fa-trash"></i>  DELETE USER</a>
                     <button type="submit" name="submit" id="submit" class="btn btn-primary btn-sm"><i class="ace-icon fa fa-check"></i> UPDATE DATA</button>            
+                    <button type="button" class="btn btn-success btn-sm" id="reloader" onclick="myReload()">RELOAD</button>
                 </div>
             </form>
         </div>
@@ -212,10 +218,12 @@ if ($idnik==0) {
           contentType: false,
           processData: false,
           success: function (status) {
-            $("#loading").hide();
+            $("#loading").hide('slow');
             document.getElementById("submit").removeAttribute('disabled');        
             alertify.success(status);
-            document.getElementById("submit").disabled = 'true'; 
+            document.getElementById("submit").disabled = 'true';
+            $("#submit").hide('slow');
+            $("#reloader").show('slow'); 
           }
         });
         return false;
@@ -240,7 +248,10 @@ if ($idnik==0) {
                 // location.reload();
                 return false;
         });
-      });
+    });
+    function myReload() {
+        location.reload();
+    }
     
 </script>
 

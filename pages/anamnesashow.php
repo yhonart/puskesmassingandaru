@@ -158,10 +158,11 @@ $(document).ready(function(){
       contentType: false,
       processData: false,
       success: function (status) {
-        $("#loading").hide();
-        document.getElementById("submit").removeAttribute('disabled');        
-        alertify.success(status);
-        document.getElementById("submit").disabled = 'true'; 
+        // $("#loading").hide();
+        // document.getElementById("submit").removeAttribute('disabled');        
+        // alertify.success(status);
+        // document.getElementById("submit").disabled = 'true';
+        location.reload(); 
       }
     });
     return false;

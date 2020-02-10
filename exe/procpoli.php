@@ -1,9 +1,10 @@
 <?php
 include("dbconnect.php");
-$diagnosa = $_POST['tindakan'];
+$diagnosa = $_POST['diagnosa'];
 $keterangan = $_POST['keterangan'];
 $idproses = $_POST['idproses'];
 $resep = $_POST['resep'];
+$tindakan = $_POST['tindakan'];
 
 // if ($tindakan == "APOTIK") {
 // 	$resep1 = $_POST['resep'];
@@ -27,12 +28,26 @@ $dokter = $_POST['doktername'];
 // 	$tindakandokter = "Pemberian Obat Kepada Pasien Sesuai Dengan Resep";
 // }
 
+if ($tindakan == "LAB")
+{
+	$status = "3";
+}
+elseif ($tindakan == "NEBU")
+{
+	$status = "21";
+}
+else{
+	$status = "4";
+}
+
 $sqlupdateprosesdetail = $con->prepare("UPDATE `detailproses` SET `diagnosa`='$diagnosa', `tindakan`='$tindakan',`dokter`='$dokter',`status`='3' WHERE `pasienproses_id`='$idproses'");
 $sqlupdateprosesdetail->execute();
 
 
-$sqlupdateproses = $con->prepare("");
-if ($sqlupdateproses) {
+$sqlupdateproses = $con->prepare("UPDATE `pasienproses` SET `status`='$status' WHERE `id_proses`='$idproses'");
+$sqlupdateproses->execute();
+
+if ($sqlupdateprosesdetail) {
 	echo "SUKSES";
 }
 

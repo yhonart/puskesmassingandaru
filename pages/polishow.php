@@ -114,12 +114,34 @@ $row=$queryuser->fetch();
             <div class="col col-md-3">
                 <label for="hf-email" class=" form-control-label">Tindakan</label>
             </div>
-            <div class="col-12 col-md-4">
+            <div class="col-12 col-md-4">                
                 <select name="tindakan" id="tindakan" class="form-control">
-                    <option value='0'>Pilih Tindakan Pasien</option>
-                    <option value='LAB'>Cek Laboratorium</option>
-                    <option value='P3K'>P3K</option>
-                    <option value='NEBU'>NEBU</option>
+                    <option value="0">Pilih Tindakan</option>
+                    <?php
+                        if($akses=="5")
+                        {
+                            echo "<option value='SCALLING'>Scalling</option>";
+                            echo "<option value='HELID'>Helid</option>";
+                            echo "<option value='CATUTGIGI'>Ext(Catut Gigi)</option>";
+
+                        }
+                        elseif($akses=="7")
+                        {
+                            echo "<option value='USG'>USG</option>";
+                            echo "<option value='DOPPLER'>DOPPLER</option>";
+                            echo "<option value='KB'>KB</option>";
+                            echo "<option value='IMPLAN'>PASANG IUD/IMPLAN</option>";
+                            echo "<option value='UP IMPLAN'>UP IMPLAN</option>";
+                            echo "<option value='BUKU KIA'>BUKU KIA</option>";
+                            echo "<option value='NEBU'>NEBU</option>";                            
+                        }
+                        else
+                        {
+                            echo "<option value='LAB'>LAB</option>";
+                            echo "<option value='P3K'>P3K</option>";
+                            echo "<option value='NEBU'>NEBU</option>";
+                        }
+                    ?>
                 </select>
             </div>
         </div>
