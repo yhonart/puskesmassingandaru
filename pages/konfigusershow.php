@@ -165,7 +165,7 @@ if ($idnik==0) {
                         <label for="hf-email" class=" form-control-label">Penugasan</label>
                     </div>
                     <div class="col-12 col-md-9">
-                        <span><?=$userakses[$row['HAKACC']]?></span>
+                        <span><?=$userakses[$row['HAKACC']]?></span> 
                         <select name="penugasan" id="penugasan" class="form-control">
                             <option value="0">Ganti Hak Akses</option>
                             <option value="1">Administrator</option>

@@ -237,9 +237,9 @@
 						else if ($row['HAKACC']=='8') {
 					?>
 					<li class="">
-						<a href="?page=Lab">
+						<a href="?page=Apotik">
 							<i class="menu-icon fa fa-picture-o"></i>
-							<span class="menu-text"> LABORATURIUM </span>
+							<span class="menu-text"> APOTIKER </span>
 						</a>
 
 						<b class="arrow"></b>
@@ -249,9 +249,9 @@
 						else if ($row['HAKACC']=='9') {
 					?>
 					<li class="">
-						<a href="?page=Apotik">
+						<a href="?page=Lab">
 							<i class="menu-icon fa fa-picture-o"></i>
-							<span class="menu-text"> APOTIK </span>
+							<span class="menu-text"> LABORATURIUM </span>
 						</a>
 
 						<b class="arrow"></b>
