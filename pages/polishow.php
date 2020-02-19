@@ -153,22 +153,29 @@ $row=$queryuser->fetch();
                 <input type="text" id="keterangan" name="keterangan" class="form-control" required=""> 
             </div>
         </div>
-        <div id="dynamic_field">
-            <div class="form-group">
-                <div class="col col-md-3">
-                    <!-- <label for="hf-email" class=" form-control-label"><b><u>Resep Dokter</u></b></label> -->
-                </div>            
-                <div class="col-12 col-md-6">
-                    <input type="text" id="resep" name="resep[]" class="form-control" placeholder="Optional Masukkan Resep Apabila Ada"> 
-                </div>
-                <div>
-                    <button type="button" class="btn btn-info btn-xs" name="addmore" id="addmore">Add More</button>
+        <div class="form-group">
+            <div class="col col-md-3">
+                <label for="hf-email" class=" form-control-label"><b><u>Resep Dokter</u></b></label>
+            </div>
+            <!-- <div class="col-12 col-md-9">
+                <input type="text" id="resep" name="resep" class="form-control" placeholder="Optional Masukkan Resep Apabila Ada"> 
+            </div> -->
+        </div>
+
+        <div class="multi-field-wrapper" id="hidden_div">              
+            <div class="multi-fields">            
+                <div class="form-group multi-field"> 
+                    <div class='col-md-6'>         
+                    <input type="text" class="form-control" name="resep[]" id="resep" autocomplete="off">
+                    </div>
+                    <button type="button" class="btn btn-danger btn-sm remove-field"><i class="fa fa-remove"></i></button>
                 </div>
             </div>
+          <button type="button" class="btn btn-primary btn-sm add-field"><i class="fa fa-plus"></i> Tambah Resep/Obat</button>
         </div>
-        
+
         <div class="form-group text-center">
-            <button name="submit" id="submit" class="btn btn-success btn-sm"><i class="ace-icon fa fa-check"></i> SUBMIT</button>            
+            <button type="submit" onkeypress="return isNumberKey(event)" name="submit" id="submit" class="btn btn-success btn-sm"><i class="ace-icon fa fa-check"></i> SUBMIT</button>            
         </div>
         </form>
         </div>
@@ -176,16 +183,6 @@ $row=$queryuser->fetch();
 </div>
 
 <script type="text/javascript">
-$(document).ready(function(){
-    var i=1;
-    $('#addmore').click(function(){
-        i++;
-        $($dynamic_field).append(
-            "<div class='form-group' id='row"+i+"'><div></div class='col col-md'></div><div class='col-12 col-md-6'><input class='form-control' name='resep[]' id='resep' type='text'></div>"
-        );
-    });
-});
-
 $(document).ready(function(){
   $("form#formanamnesa").submit(function(event){    
     document.getElementById("submit").disabled='true';
