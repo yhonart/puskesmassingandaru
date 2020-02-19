@@ -40,7 +40,7 @@ else{
 	$status = "4";
 }
 
-$sqlupdateprosesdetail = $con->prepare("UPDATE `detailproses` SET `diagnosa`='$diagnosa', `tindakan`='$tindakan',`resep`='$resep',`dokter`='$dokter',`status`='3' WHERE `pasienproses_id`='$idproses'");
+$sqlupdateprosesdetail = $con->prepare("UPDATE `detailproses` SET `diagnosa`='$diagnosa', `tindakan`='$tindakan',`resep`='$resep',`dokter`='$dokter' WHERE `pasienproses_id`='$idproses'");
 $sqlupdateprosesdetail->execute();
 
 
