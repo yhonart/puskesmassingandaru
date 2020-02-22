@@ -328,10 +328,10 @@
 					<div class="footer-content">
 						<span class="bigger-120">
 							<span class="blue bolder">SYMASKES</span>
-							System Management Perawatan Puskesmas
+							[<i>System Management Perawatan Puskesmas</i>]
 						</span>
 						&nbsp; &nbsp;
-						<strong>PUSEKESMAS SINGANDARU</strong> Jl. 
+						<strong>PUSKESMAS SINGANDARU</strong> 
 					</div>
 				</div>
 			</div>
